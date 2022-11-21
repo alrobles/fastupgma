@@ -1,0 +1,19 @@
+---
+title: "Fast Unweighted Pair Group Method with Arithmetic Mean implementation for build phylogenetic trees from distance matrix"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Fast Unweighted Pair Group Method with Arithmetic Mean implementation for build phylogenetic trees from distance matrix}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(fastupgma)
+```

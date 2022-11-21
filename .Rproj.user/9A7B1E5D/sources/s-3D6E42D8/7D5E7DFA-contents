@@ -1,0 +1,18 @@
+tree_url <- "https://raw.githubusercontent.com/n8upham/MamPhy_v1/master/_DATA/MamPhy_fullPosterior_BDvr_Completed_5911sp_topoCons_NDexp_MCC_v2_target.tre"
+taxonomy_url <- "https://raw.githubusercontent.com/n8upham/MamPhy_v1/master/_DATA/taxonomy_mamPhy_5911species_toPublish.csv"
+taxonomy <- readr::read_csv(taxonomy_url)
+tree_0 <- ape::read.nexus(tree_url)
+tree_0 <- ape::drop.tip(tree_0, "_Anolis_carolinensis")
+
+library(tidyverse)
+tipnames0 <- tree_0$tip.label %>% tibble::enframe(value = "tiplabel")
+tipnames0
+taxonomy %>% count(gen, sort = TRUE)
+CrociduraNames <- filter(taxonomy, gen == "Crocidura") %>% 
+  pull(tiplabel)
+CrociduraTree <- ape::keep.tip(tree_0, CrociduraNames)
+CrociduraDistance <- ape::cophenetic.phylo(CrociduraTree)
+
+if (FALSE) {
+  use_data_raw("CrociduraDistance")
+}
